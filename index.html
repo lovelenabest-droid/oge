@@ -2,123 +2,294 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>ОГЭ Обществознание</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ОГЭ Обществознание (20 заданий)</title>
 <style>
-body{font-family:Arial,sans-serif;background:#f1f5f9;color:#0f172a;padding:20px;max-width:850px;margin:0 auto;line-height:1.5}
-.head{background:#1e3a8a;color:#fff;padding:20px;border-radius:8px;margin-bottom:20px}
-.part{background:#cbd5e1;padding:10px 15px;border-radius:6px;font-weight:bold;margin:25px 0 15px}
-.card{background:#fff;border:1px solid #cbd5e1;border-radius:8px;padding:18px;margin-bottom:15px}
-.meta{font-size:12px;color:#475569;font-weight:bold;margin-bottom:8px}
-.q{font-weight:bold;margin-bottom:12px}
-label{display:block;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;margin-bottom:6px;cursor:pointer}
-label:hover{background:#f8fafc}
-details{margin-top:12px;background:#eff6ff;border:1px solid #93c5fd;border-radius:6px;padding:10px 14px}
-summary{font-weight:bold;color:#1e40af;cursor:pointer}
-textarea{width:100%;box-sizing:border-box;min-height:70px;margin-top:8px;padding:8px;border:1px solid #cbd5e1;border-radius:6px;font-family:inherit}
-.txt{background:#fff;border-left:4px solid #1e3a8a;padding:15px;margin-bottom:15px}
-.end{background:#fff;border:2px solid #1e3a8a;border-radius:8px;padding:20px;text-align:center;margin-top:25px}
-table{width:100%;border-collapse:collapse;margin:15px 0}
-th,td{border:1px solid #cbd5e1;padding:8px;text-align:center}
-th{background:#e2e8f0}
-button{background:#475569;color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;font-weight:bold}
+body{font-family:Arial,sans-serif;background:#f1f5f9;color:#0f172a;line-height:1.5;margin:0;padding:16px}
+.container{max-width:860px;margin:0 auto}
+header{background:#1e3a8a;color:#fff;padding:20px 24px;border-radius:10px;margin-bottom:20px}
+header h1{margin:0 0 6px;font-size:1.4rem}
+header p{margin:0;font-size:.92rem;opacity:.95}
+.part-title{background:#cbd5e1;padding:10px 16px;border-radius:8px;font-weight:bold;font-size:1.1rem;margin:24px 0 14px}
+.question-card{background:#fff;border:1px solid #cbd5e1;border-radius:10px;padding:20px;margin-bottom:16px}
+.q-meta{display:inline-block;background:#e2e8f0;color:#334155;font-size:.8rem;font-weight:bold;padding:3px 9px;border-radius:5px;margin-bottom:10px}
+.q-text{font-weight:bold;font-size:1.02rem;margin-bottom:14px}
+.source-text{background:#f8fafc;border-left:4px solid #1e3a8a;padding:14px 18px;margin-bottom:16px;font-size:.95rem}
+.options{display:flex;flex-direction:column;gap:8px}
+.option-label{display:flex;align-items:flex-start;gap:8px;padding:9px 12px;border:1px solid #cbd5e1;border-radius:7px;cursor:pointer}
+.option-label:hover{background:#f8fafc}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;background:#f8fafc;padding:12px;border-radius:7px;border:1px solid #e2e8f0;font-size:.92rem}
+.match-selects{display:flex;flex-wrap:wrap;gap:12px}
+.match-item{display:flex;align-items:center;gap:6px;font-weight:bold}
+select,textarea{padding:7px 10px;border:1px solid #cbd5e1;border-radius:6px;font-size:.95rem;font-family:inherit}
+textarea{width:100%;box-sizing:border-box;min-height:80px;resize:vertical}
+.btn-check{margin-top:12px;background:#1e40af;color:#fff;border:none;padding:9px 18px;font-size:.92rem;font-weight:bold;border-radius:6px;cursor:pointer}
+.btn-check:disabled{background:#94a3b8;cursor:not-allowed}
+.warn-msg{display:none;color:#b91c1c;font-weight:bold;font-size:.88rem;margin-top:8px}
+.feedback{display:none;margin-top:12px;padding:14px 16px;border-radius:7px;font-size:.92rem}
+.feedback.show-ok{display:block;background:#dcfce7;border:1px solid #16a34a;color:#14532d}
+.feedback.show-err{display:block;background:#fee2e2;border:1px solid #dc2626;color:#7f1d1d}
+.feedback.show-info{display:block;background:#eff6ff;border:1px solid #2563eb;color:#1e3a8a}
+.self-grade-box{margin-top:12px;padding-top:10px;border-top:1px solid #bfdbfe;display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.btn-grade{background:#2563eb;color:#fff;border:none;padding:5px 12px;border-radius:5px;cursor:pointer;font-weight:bold}
+.btn-grade:disabled{background:#94a3b8;cursor:not-allowed}
+.summary-box{background:#fff;border:3px solid #1e3a8a;border-radius:10px;padding:20px;text-align:center;margin-top:24px}
+.score-display{font-size:1.25rem;font-weight:bold;color:#1e3a8a;margin-bottom:8px}
+.grade-display{font-size:1.4rem;font-weight:bold;padding:8px 18px;border-radius:7px;display:inline-block;margin:8px 0;background:#fee2e2;color:#7f1d1d}
+.scale-table{width:100%;max-width:560px;margin:12px auto;border-collapse:collapse;font-size:.88rem}
+.scale-table th,.scale-table td{border:1px solid #cbd5e1;padding:7px;text-align:center}
+.scale-table th{background:#e2e8f0}
+.btn-reset{background:#475569;color:#fff;border:none;padding:10px 22px;border-radius:6px;cursor:pointer;font-size:.95rem;font-weight:bold;margin-top:8px}
+@media(max-width:600px){.match-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<form>
-<div class="head">
-<h2 style="margin:0 0 5px">Тренировочный вариант ОГЭ по обществознанию (20 заданий)</h2>
-<div>Уровень на «4» и «5» • 12 заданий с кратким ответом + 8 заданий с развёрнутым ответом</div>
+<div class="container">
+<header>
+<h1>Тренировочный вариант ОГЭ по обществознанию (20 заданий)</h1>
+<p>Уровень оценки «4» и «5». 12 заданий с кратким ответом + 8 заданий с развёрнутым ответом по критериям ФИПИ.</p>
+</header>
+
+<div class="part-title">ЧАСТЬ 1. Задания с кратким ответом (Задания 1–12 • Максимум 13 баллов)</div>
+
+<div class="question-card" id="card-1">
+<div class="q-meta">Задание 1 • Линия 2 (Человек и общество) • 1 балл</div>
+<div class="q-text">Одиннадцатиклассник Арсений готовится к сдаче ЕГЭ по профильной математике, систематически решая сложные задачи и изучая дополнительные пособия. Какой вид деятельности иллюстрирует этот пример и что является её субъектом?</div>
+<div class="options">
+<label class="option-label"><input type="radio" name="q1" value="1"><span>1) учение; субъект — сложные задачи</span></label>
+<label class="option-label"><input type="radio" name="q1" value="2"><span>2) учение; субъект — Арсений</span></label>
+<label class="option-label"><input type="radio" name="q1" value="3"><span>3) труд; субъект — сдача ЕГЭ</span></label>
+<label class="option-label"><input type="radio" name="q1" value="4"><span>4) игра; субъект — Арсений</span></label>
+</div>
+<button type="button" class="btn-check" onclick="checkRadio(1,'2')">Проверить ответ</button>
+<div class="warn-msg" id="warn-1">Сначала выберите один из вариантов ответа выше!</div>
+<div class="feedback" id="fb-1"><strong>Правильный ответ: 2.</strong> Подготовка к экзамену направлена на приобретение знаний — это <strong>учение</strong>. <strong>Субъект деятельности</strong> — сам человек (Арсений).</div>
 </div>
 
-<div class="part">ЧАСТЬ 1. Задания с кратким ответом (1–12 • Максимум 13 баллов)</div>
-
-<div class="card">
-<div class="meta">Задание 1 • Линия 2 (Человек и общество) • 1 балл</div>
-<div class="q">Одиннадцатиклассник Арсений готовится к сдаче ЕГЭ по профильной математике, систематически решая сложные задачи и изучая дополнительные пособия. Какой вид деятельности иллюстрирует этот пример и что является её субъектом?</div>
-<label><input type="radio" name="q1"> 1) учение; субъект — сложные задачи</label>
-<label><input type="radio" name="q1"> 2) учение; субъект — Арсений</label>
-<label><input type="radio" name="q1"> 3) труд; субъект — сдача ЕГЭ</label>
-<label><input type="radio" name="q1"> 4) игра; субъект — Арсений</label>
-<details><summary>Показать правильный ответ и разбор</summary><p><strong>Ответ: 2.</strong> Подготовка к экзамену направлена на приобретение знаний — это <strong>учение</strong>. <strong>Субъект деятельности</strong> — сам человек (Арсений).</p></details>
+<div class="question-card" id="card-2">
+<div class="q-meta">Задание 2 • Линия 3 (Человек и общество) • 1 балл</div>
+<div class="q-text">Верны ли следующие суждения об обществе и природе?<br>А. Общество полностью преодолело зависимость от природных факторов благодаря научно-техническому прогрессу.<br>Б. Влияние общества на природу носит исключительно негативный, разрушительный характер.</div>
+<div class="options">
+<label class="option-label"><input type="radio" name="q2" value="1"><span>1) верно только А</span></label>
+<label class="option-label"><input type="radio" name="q2" value="2"><span>2) верно только Б</span></label>
+<label class="option-label"><input type="radio" name="q2" value="3"><span>3) верны оба суждения</span></label>
+<label class="option-label"><input type="radio" name="q2" value="4"><span>4) оба суждения неверны</span></label>
+</div>
+<button type="button" class="btn-check" onclick="checkRadio(2,'4')">Проверить ответ</button>
+<div class="warn-msg" id="warn-2">Сначала выберите один из вариантов ответа выше!</div>
+<div class="feedback" id="fb-2"><strong>Правильный ответ: 4 (оба суждения неверны).</strong> Общество по-прежнему зависит от климата и ресурсов (А неверно), а влияние на природу бывает и созидательным — заповедники, лесовосстановление (Б неверно).</div>
 </div>
 
-<div class="card">
-<div class="meta">Задание 2 • Линия 3 (Человек и общество) • 1 балл</div>
-<div class="q">Верны ли следующие суждения об обществе и природе?<br>А. Общество полностью преодолело зависимость от природных факторов благодаря научно-техническому прогрессу.<br>Б. Влияние общества на природу носит исключительно негативный, разрушительный характер.</div>
-<label><input type="radio" name="q2"> 1) верно только А</label>
-<label><input type="radio" name="q2"> 2) верно только Б</label>
-<label><input type="radio" name="q2"> 3) верны оба суждения</label>
-<label><input type="radio" name="q2"> 4) оба суждения неверны</label>
-<details><summary>Показать правильный ответ и разбор</summary><p><strong>Ответ: 4 (оба суждения неверны).</strong> Общество по-прежнему зависит от климата и ресурсов (А неверно), а влияние на природу бывает и созидательным — заповедники, лесовосстановление (Б неверно).</p></details>
+<div class="question-card" id="card-3">
+<div class="q-meta">Задание 3 • Линия 4 (Сфера духовной культуры) • 1 балл</div>
+<div class="q-text">В стране Z государство гарантирует гражданам свободу совести и вероисповедания, ни одна религия не устанавливается в качестве обязательной, религиозные объединения отделены от государства. К какому типу государств по отношению к религии относится страна Z?</div>
+<div class="options">
+<label class="option-label"><input type="radio" name="q3" value="1"><span>1) теократическому</span></label>
+<label class="option-label"><input type="radio" name="q3" value="2"><span>2) клерикальному</span></label>
+<label class="option-label"><input type="radio" name="q3" value="3"><span>3) светскому</span></label>
+<label class="option-label"><input type="radio" name="q3" value="4"><span>4) атеистическому</span></label>
+</div>
+<button type="button" class="btn-check" onclick="checkRadio(3,'3')">Проверить ответ</button>
+<div class="warn-msg" id="warn-3">Сначала выберите один из вариантов ответа выше!</div>
+<div class="feedback" id="fb-3"><strong>Правильный ответ: 3 (светскому).</strong> Отделение церкви от государства и отсутствие государственной религии — признаки светского государства (ст. 14 Конституции РФ).</div>
 </div>
 
-<div class="card">
-<div class="meta">Задание 3 • Линия 4 (Сфера духовной культуры) • 1 балл</div>
-<div class="q">В стране Z государство гарантирует гражданам свободу совести и вероисповедания, ни одна религия не устанавливается в качестве обязательной, религиозные объединения отделены от государства. К какому типу государств по отношению к религии относится страна Z?</div>
-<label><input type="radio" name="q3"> 1) теократическому</label>
-<label><input type="radio" name="q3"> 2) клерикальному</label>
-<label><input type="radio" name="q3"> 3) светскому</label>
-<label><input type="radio" name="q3"> 4) атеистическому</label>
-<details><summary>Показать правильный ответ и разбор</summary><p><strong>Ответ: 3 (светскому).</strong> Отделение церкви от государства и отсутствие государственной религии — признаки светского государства (ст. 14 Конституции РФ).</p></details>
+<div class="question-card" id="card-4">
+<div class="q-meta">Задание 4 • Линия 7 (Экономика) • 1 балл</div>
+<div class="q-text">В условиях рыночной экономики произошёл резкий рост доходов населения. Как при прочих равных условиях это отразится на спросе на смартфоны премиум-класса и на равновесной цене на данном рынке?</div>
+<div class="options">
+<label class="option-label"><input type="radio" name="q4" value="1"><span>1) спрос вырастет; равновесная цена вырастет</span></label>
+<label class="option-label"><input type="radio" name="q4" value="2"><span>2) спрос сократится; равновесная цена снизится</span></label>
+<label class="option-label"><input type="radio" name="q4" value="3"><span>3) спрос вырастет; равновесная цена снизится</span></label>
+<label class="option-label"><input type="radio" name="q4" value="4"><span>4) спрос не изменится; равновесная цена вырастет</span></label>
+</div>
+<button type="button" class="btn-check" onclick="checkRadio(4,'1')">Проверить ответ</button>
+<div class="warn-msg" id="warn-4">Сначала выберите один из вариантов ответа выше!</div>
+<div class="feedback" id="fb-4"><strong>Правильный ответ: 1.</strong> Рост доходов потребителей увеличивает спрос на нормальные товары, что при неизменном предложении ведёт к росту равновесной цены.</div>
 </div>
 
-<div class="card">
-<div class="meta">Задание 4 • Линия 7 (Экономика) • 1 балл</div>
-<div class="q">В условиях рыночной экономики произошёл резкий рост доходов населения. Как при прочих равных условиях это отразится на спросе на смартфоны премиум-класса и на равновесной цене на данном рынке?</div>
-<label><input type="radio" name="q4"> 1) спрос вырастет; равновесная цена вырастет</label>
-<label><input type="radio" name="q4"> 2) спрос сократится; равновесная цена снизится</label>
-<label><input type="radio" name="q4"> 3) спрос вырастет; равновесная цена снизится</label>
-<label><input type="radio" name="q4"> 4) спрос не изменится; равновесная цена вырастет</label>
-<details><summary>Показать правильный ответ и разбор</summary><p><strong>Ответ: 1.</strong> Рост доходов потребителей увеличивает спрос на нормальные товары, что при неизменном предложении ведёт к росту равновесной цены.</p></details>
+<div class="question-card" id="card-5">
+<div class="q-meta">Задание 5 • Линия 8 (Экономика) • 1 балл</div>
+<div class="q-text">Какой из приведённых налогов в Российской Федерации относится к региональным налогам и сборам?</div>
+<div class="options">
+<label class="option-label"><input type="radio" name="q5" value="1"><span>1) налог на добавленную стоимость (НДС)</span></label>
+<label class="option-label"><input type="radio" name="q5" value="2"><span>2) налог на доходы физических лиц (НДФЛ)</span></label>
+<label class="option-label"><input type="radio" name="q5" value="3"><span>3) транспортный налог</span></label>
+<label class="option-label"><input type="radio" name="q5" value="4"><span>4) земельный налог</span></label>
+</div>
+<button type="button" class="btn-check" onclick="checkRadio(5,'3')">Проверить ответ</button>
+```html
+<div class="question-card" id="card-11">
+<div class="q-meta">Задание 11 • Линия 15 (Право / Конституция РФ) • 2 балла</div>
+<div class="q-text">Установите соответствие между вопросами и субъектами государственной власти РФ, к ведению которых они относятся:</div>
+<div class="match-grid">
+<div><strong>ВОПРОСЫ</strong><br><br>А) внешняя политика и международные отношения РФ<br>Б) защита семьи, материнства, отцовства и детства<br>В) федеральный бюджет<br>Г) кадры судебных и правоохранительных органов<br>Д) природопользование, охрана окружающей среды</div>
+<div><strong>СУБЪЕКТЫ ВЛАСТИ РФ</strong><br><br>1) только федеральный центр<br>2) совместно федеральный центр и субъекты РФ</div>
+</div>
+<div class="match-selects">
+<div class="match-item"><span>А:</span><select id="m1"><option value="0">—</option><option value="1">1</option><option value="2">2</option></select></div>
+<div class="match-item"><span>Б:</span><select id="m2"><option value="0">—</option><option value="1">1</option><option value="2">2</option></select></div>
+<div class="match-item"><span>В:</span><select id="m3"><option value="0">—</option><option value="1">1</option><option value="2">2</option></select></div>
+<div class="match-item"><span>Г:</span><select id="m4"><option value="0">—</option><option value="1">1</option><option value="2">2</option></select></div>
+<div class="match-item"><span>Д:</span><select id="m5"><option value="0">—</option><option value="1">1</option><option value="2">2</option></select></div>
+</div>
+<button type="button" class="btn-check" onclick="checkMatch()">Проверить ответ</button>
+<div class="warn-msg" id="warn-11">Сначала выберите цифры для всех букв (А, Б, В, Г, Д)!</div>
+<div class="feedback" id="fb-11"><strong>Правильная последовательность: А-1, Б-2, В-1, Г-2, Д-2 (12122).</strong> Внешняя политика (А) и федеральный бюджет (В) — исключительное ведение РФ (ст. 71 Конституции РФ). Защита семьи (Б), кадры судов (Г) и охрана природы (Д) — совместное ведение (ст. 72).</div>
 </div>
 
-<div class="card">
-<div class="meta">Задание 5 • Линия 8 (Экономика) • 1 балл</div>
-<div class="q">Какой из приведённых налогов в Российской Федерации относится к региональным налогам и сборам?</div>
-<label><input type="radio" name="q5"> 1) налог на добавленную стоимость (НДС)</label>
-<label><input type="radio" name="q5"> 2) налог на доходы физических лиц (НДФЛ)</label>
-<label><input type="radio" name="q5"> 3) транспортный налог</label>
-<label><input type="radio" name="q5"> 4) земельный налог</label>
-<details><summary>Показать правильный ответ и разбор</summary><p><strong>Ответ: 3 (транспортный налог).</strong> По ст. 14 НК РФ к региональным относятся транспортный налог, налог на имущество организаций и налог на игорный бизнес. НДС и НДФЛ — федеральные, земельный — местный.</p></details>
+<div class="question-card" id="card-12">
+<div class="q-meta">Задание 12 • Линия 18 (Право) • 1 балл</div>
+<div class="q-text">Верны ли следующие суждения об уголовной ответственности несовершеннолетних в РФ?<br>А. По общему правилу уголовной ответственности подлежит лицо, достигшее ко времени совершения преступления шестнадцатилетнего возраста.<br>Б. За убийство, умышленное причинение тяжкого вреда здоровью, кражу и грабёж уголовная ответственность наступает с двенадцати лет.</div>
+<div class="options">
+<label class="option-label"><input type="radio" name="q12" value="1"><span>1) верно только А</span></label>
+<label class="option-label"><input type="radio" name="q12" value="2"><span>2) верно только Б</span></label>
+<label class="option-label"><input type="radio" name="q12" value="3"><span>3) верны оба суждения</span></label>
+<label class="option-label"><input type="radio" name="q12" value="4"><span>4) оба суждения неверны</span></label>
+</div>
+<button type="button" class="btn-check" onclick="checkRadio(12,'1')">Проверить ответ</button>
+<div class="warn-msg" id="warn-12">Сначала выберите один из вариантов ответа выше!</div>
+<div class="feedback" id="fb-12"><strong>Правильный ответ: 1 (верно только А).</strong> Общий возраст уголовной ответственности — 16 лет, а за тяжкие преступления (убийство, кража, грабёж) она наступает с <strong>14 лет</strong> (ст. 20 УК РФ).</div>
 </div>
 
-<div class="card">
-<div class="meta">Задание 6 • Линия 9 (Экономика) • 1 балл</div>
-<div class="q">Верны ли следующие суждения о роли государства в рыночной экономике?<br>А. Государство в рыночной экономике директивно устанавливает цены на все производимые товары и услуги.<br>Б. Государство компенсирует «провалы» рынка, организуя производство общественных благ (национальная оборона, бесплатное образование).</div>
-<label><input type="radio" name="q6"> 1) верно только А</label>
-<label><input type="radio" name="q6"> 2) верно только Б</label>
-<label><input type="radio" name="q6"> 3) верны оба суждения</label>
-<label><input type="radio" name="q6"> 4) оба суждения неверны</label>
-<details><summary>Показать правильный ответ и разбор</summary><p><strong>Ответ: 2 (верно только Б).</strong> Директивные цены — признак командной экономики (А неверно), а создание общественных благ — функция государства в рыночной экономике (Б верно).</p></details>
+<div class="part-title">ЧАСТЬ 2. Задания с развёрнутым ответом (Задания 13–20 • Максимум 19 баллов)</div>
+<p style="font-size:.92rem;color:#334155">Впишите свой ответ в поле, затем нажмите «Показать эталон и критерии». Сравните свой ответ с эталоном ФИПИ и начислите себе баллы.</p>
+
+<div class="question-card">
+<div class="q-meta">Задание 13 • Линия 1 (Понятийный аппарат) • Максимум 2 балла</div>
+<div class="q-text">Какие два из перечисленных понятий используются в первую очередь при описании политической сферы общества? <em>Девальвация; политический плюрализм; социальная стратификация; разделение властей; издержки производства.</em> Выпишите соответствующие понятия и раскройте смысл любого одного из них.</div>
+<textarea placeholder="Напишите ваш ответ здесь..."></textarea>
+<button type="button" class="btn-check" onclick="showOpen('fb-13')">Показать эталон и критерии</button>
+<div class="feedback" id="fb-13">
+<strong>Эталон ответа ФИПИ:</strong><br>1) Понятия: <strong>политический плюрализм, разделение властей</strong>.<br>2) Смысл: <em>Политический плюрализм</em> — принцип устройства политической системы, предполагающий многообразие политических партий и идеологий, их свободную конкуренцию в борьбе за власть.<br><strong>Критерии:</strong> 2 балла — выписаны оба понятия и раскрыт смысл одного; 1 балл — выписаны только два понятия.
+<div class="self-grade-box" id="sg-13"><span>Оцените свой ответ:</span><button type="button" class="btn-grade" onclick="addOpenScore(13,0)">0 баллов</button><button type="button" class="btn-grade" onclick="addOpenScore(13,1)">1 балл</button><button type="button" class="btn-grade" onclick="addOpenScore(13,2)">2 балла</button></div>
+</div>
 </div>
 
-<div class="card">
-<div class="meta">Задание 7 • Линия 10 (Социальная сфера) • 1 балл</div>
-<div class="q">Гражданин Н. переехал из небольшого посёлка в мегаполис, окончил университет и устроился на должность главного инженера крупного завода. Какой социальный процесс иллюстрирует данный пример?</div>
-<label><input type="radio" name="q7"> 1) социальную деградацию</label>
-<label><input type="radio" name="q7"> 2) восходящую вертикальную социальную мобильность</label>
-<label><input type="radio" name="q7"> 3) нисходящую вертикальную социальную мобильность</label>
-<label><input type="radio" name="q7"> 4) маргинализацию личности</label>
-<details><summary>Показать правильный ответ и разбор</summary><p><strong>Ответ: 2.</strong> Получение высшего образования и занятие руководящей должности означает повышение социального статуса — это восходящая вертикальная мобильность.</p></details>
+<div class="question-card">
+<div class="q-meta">Задание 14 • Линия 5 (Финансовая грамотность) • Максимум 3 балла</div>
+<div class="q-text">Анне поступило сообщение в мессенджере якобы от службы безопасности банка: «Ваша карта заблокирована. Для разблокировки срочно перейдите по ссылке и введите данные карты и код из СМС». 1) В чём опасность ситуации для личных финансов Анны? 2) Как ей правильно поступить (укажите два действия)?</div>
+<textarea placeholder="Напишите ваш ответ здесь..."></textarea>
+<button type="button" class="btn-check" onclick="showOpen('fb-14')">Показать эталон и критерии</button>
+<div class="feedback" id="fb-14">
+<strong>Эталон ответа ФИПИ:</strong><br>1) <strong>Опасность:</strong> это действия интернет-мошенников (фишинг). Ввод реквизитов карты и кода из СМС позволит злоумышленникам похитить все деньги со счёта.<br>2) <strong>Правильные действия:</strong> не переходить по ссылке и не вводить реквизиты карты и коды из СМС; самостоятельно позвонить в банк по официальному номеру с обратной стороны карты.<br><strong>Критерии:</strong> 3 б. — опасность + два действия; 2 б. — опасность + одно действие; 1 б. — только опасность или только действия.
+<div class="self-grade-box" id="sg-14"><span>Оцените свой ответ:</span><button type="button" class="btn-grade" onclick="addOpenScore(14,0)">0 баллов</button><button type="button" class="btn-grade" onclick="addOpenScore(14,1)">1 балл</button><button type="button" class="btn-grade" onclick="addOpenScore(14,2)">2 балла</button><button type="button" class="btn-grade" onclick="addOpenScore(14,3)">3 балла</button></div>
+</div>
 </div>
 
-<div class="card">
-<div class="meta">Задание 8 • Линия 11 (Социальная сфера) • 1 балл</div>
-<div class="q">Верны ли следующие суждения о семье и её функциях?<br>А. Нуклеарная семья состоит из супружеской пары с несовершеннолетними детьми или без них.<br>Б. Репродуктивная функция семьи заключается в организации совместного досуга и отдыха членов семьи.</div>
-<label><input type="radio" name="q8"> 1) верно только А</label>
-<label><input type="radio" name="q8"> 2) верно только Б</label>
-<label><input type="radio" name="q8"> 3) верны оба суждения</label>
-<label><input type="radio" name="q8"> 4) оба суждения неверны</label>
-<details><summary>Показать правильный ответ и разбор</summary><p><strong>Ответ: 1 (верно только А).</strong> Нуклеарная семья включает родителей и детей (А верно). Репродуктивная функция — это рождение детей, а отдых относится к досуговой функции (Б неверно).</p></details>
+<div class="question-card">
+<div class="q-meta">Задание 15 • Линия 6 (Анализ статистики) • Максимум 2 балла</div>
+<div class="q-text">Опрос совершеннолетних граждан: «Какой способ инвестирования личных сбережений вы считаете наиболее предпочтительным?»: банковский вклад — 48%, покупка недвижимости — 27%, акции и облигации — 15%, драгметаллы — 10%. 1) Сформулируйте один вывод о различии в позициях опрошенных. 2) Объясните высокую популярность банковских вкладов.</div>
+<textarea placeholder="Напишите ваш ответ здесь..."></textarea>
+<button type="button" class="btn-check" onclick="showOpen('fb-15')">Показать эталон и критерии</button>
+<div class="feedback" id="fb-15">
+<strong>Эталон ответа ФИПИ:</strong><br>1) <strong>Вывод:</strong> Наибольшая доля опрошенных (48%) выбирает банковские вклады, тогда как наименьшая (10%) — покупку драгоценных металлов.<br>2) <strong>Объяснение:</strong> Банковский вклад — простой, понятный и надёжный инструмент с минимальными рисками (вклады застрахованы государством), не требующий специальных финансовых знаний.<br><strong>Критерии:</strong> 2 б. — вывод + объяснение; 1 б. — только вывод или только объяснение.
+<div class="self-grade-box" id="sg-15"><span>Оцените свой ответ:</span><button type="button" class="btn-grade" onclick="addOpenScore(15,0)">0 баллов</button><button type="button" class="btn-grade" onclick="addOpenScore(15,1)">1 балл</button><button type="button" class="btn-grade" onclick="addOpenScore(15,2)">2 балла</button></div>
+</div>
 </div>
 
-<div class="card">
-<div class="meta">Задание 9 • Линия 13 (Сфера политики) • 1 балл</div>
-<div class="q">В государстве Z выборы в парламент проводятся по единому общенациональному избирательному округу. Избиратели голосуют за списки кандидатов, выдвинутые политическими партиями, а мандаты распределяются пропорционально набранным голосам при условии преодоления 5-процентного барьера. Какая избирательная система действует в государстве Z?</div>
-<label><input type="radio" name="q9"> 1) мажоритарная</label>
-<label><input type="radio" name="q9"> 2) пропорциональная</label>
-<label><input type="radio" name="q9"> 3) смешанная</label>
-<label><input type="radio" name="q9"> 4) цензовая</label>
-<details><summary>Показать правильный ответ и разбор</summary><p><strong>Ответ: 2 (пропорциональная).</strong> Единый округ, партийные списки и заградительный барьер — признаки пропорциональной избирательной системы.</p></details>
+<div class="question-card">
+<div class="q-meta">Задание 16 • Линия 12 (Правовая задача) • Максимум 2 балла</div>
+<div class="q-text">15-летний школьник Дмитрий решил в период летних каникул устроиться курьером. Работодатель потребовал письменное согласие одного из родителей и предупредил, что Дмитрий будет работать по 40 часов в неделю наравне со взрослыми. Правомерны ли действия работодателя? Обоснуйте ответ.</div>
+<textarea placeholder="Напишите ваш ответ здесь..."></textarea>
+<button type="button" class="btn-check" onclick="showOpen('fb-16')">Показать эталон и критерии</button>
+<div class="feedback" id="fb-16">
+<strong>Эталон ответа ФИПИ:</strong><br>1) <strong>Оценка:</strong> Действия работодателя правомерны лишь частично (требование согласия родителя законно, а установление 40-часовой рабочей недели — незаконно).<br>2) <strong>Обоснование:</strong> По ТК РФ заключение трудового договора с 15-летним подростком допускается с письменного согласия одного из родителей. Однако для работников младше 16 лет установлена сокращённая рабочая неделя — не более 24 часов в неделю.<br><strong>Критерии:</strong> 2 б. — верная оценка + правовое обоснование; 1 б. — только оценка или обоснована одна часть.
+<div class="self-grade-box" id="sg-16"><span>Оцените свой ответ:</span><button type="button" class="btn-grade" onclick="addOpenScore(16,0)">0 баллов</button><button type="button" class="btn-grade" onclick="addOpenScore(16,1)">1 балл</button><button type="button" class="btn-grade" onclick="addOpenScore(16,2)">2 балла</button></div>
+</div>
 </div>
 
+<div class="source-text">
+<strong>Прочитайте текст и выполните задания 17–20.</strong><br>
+<div class="question-card">
+<div class="q-meta">Задание 19 • Линия 23 (Иллюстрация примерами) • Максимум 3 балла</div>
+<div class="q-text">Назовите любых трёх упомянутых в тексте агентов вторичной социализации и проиллюстрируйте примером социализирующее воздействие каждого из них на личность.</div>
+<textarea placeholder="Напишите ваш ответ здесь..."></textarea>
+<button type="button" class="btn-check" onclick="showOpen('fb-19')">Показать эталон и критерии</button>
+<div class="feedback" id="fb-19">
+<strong>Эталон ответа ФИПИ:</strong><br>1) <strong>Трудовой коллектив:</strong> устроившись на работу, выпускник вуза научился соблюдать корпоративный дресс-код и работать в команде.<br>2) <strong>Армия:</strong> проходя военную службу, молодой человек освоил навыки дисциплины, подчинения уставу и обращения с техникой.<br>3) <strong>СМИ:</strong> регулярно просматривая аналитические новости, гражданин сформировал представление об избирательном процессе в стране.<br><strong>Критерии:</strong> 3 б. — три агента и три развёрнутых примера; 2 б. — два примера; 1 б. — один пример.
+<div class="self-grade-box" id="sg-19"><span>Оцените свой ответ:</span><button type="button" class="btn-grade" onclick="addOpenScore(19,0)">0 баллов</button><button type="button" class="btn-grade" onclick="addOpenScore(19,1)">1 балл</button><button type="button" class="btn-grade" onclick="addOpenScore(19,2)">2 балла</button><button type="button" class="btn-grade" onclick="addOpenScore(19,3)">3 балла</button></div>
+</div>
+</div>
+
+<div class="question-card">
+<div class="q-meta">Задание 20 • Линия 24 (Аргументация суждения) • Максимум 3 балла</div>
+<div class="q-text">Автор утверждает, что социализация продолжается на протяжении всей жизни человека. Используя обществоведческие знания, приведите два аргумента, подтверждающих необходимость социализации в пожилом возрасте.</div>
+<textarea placeholder="Напишите ваш ответ здесь..."></textarea>
+<button type="button" class="btn-check" onclick="showOpen('fb-20')">Показать эталон и критерии</button>
+<div class="feedback" id="fb-20">
+<strong>Эталон ответа ФИПИ:</strong><br>1) <strong>Освоение новых социальных ролей:</strong> выход на пенсию, появление внуков требуют изменения образа жизни и усвоения новых моделей поведения.<br>2) <strong>Адаптация к технологическим изменениям:</strong> цифровизация госуслуг и онлайн-банкинга требует от пожилых людей освоения новых навыков для полноценной жизни в обществе.<br><strong>Критерии:</strong> 3 б. — два развёрнутых аргумента; 2 б. — один аргумент и одно неточное объяснение; 1 б. — один аргумент.
+<div class="self-grade-box" id="sg-20"><span>Оцените свой ответ:</span><button type="button" class="btn-grade" onclick="addOpenScore(20,0)">0 баллов</button><button type="button" class="btn-grade" onclick="addOpenScore(20,1)">1 балл</button><button type="button" class="btn-grade" onclick="addOpenScore(20,2)">2 балла</button><button type="button" class="btn-grade" onclick="addOpenScore(20,3)">3 балла</button></div>
+</div>
+</div>
+
+<div class="summary-box">
+<div class="score-display">Часть 1: <span id="p1-score">0</span> / 13 б. | Часть 2: <span id="p2-score">0</span> / 19 б. | Итого: <span id="total-score">0</span> / 32 баллов</div>
+<div class="grade-display" id="grade-box">Предположительная оценка: <span id="grade-val">«2» (неудовлетворительно)</span></div>
+<table class="scale-table">
+<tr><th>Оценка по 5-балльной шкале</th><th>«2»</th><th>«3»</th><th>«4»</th><th>«5»</th></tr>
+<tr><td><strong>Первичные баллы (из 32)</strong></td><td>0 – 11</td><td>12 – 19</td><td>20 – 26</td><td>27 – 32</td></tr>
+</table>
+<button type="button" class="btn-reset" onclick="resetAll()">Пройти тест заново</button>
+</div>
+</div>
+
+<script>
+var p1=0,p2=0;
+function upd(){
+var t=p1+p2;
+document.getElementById('p1-score').innerText=p1;
+document.getElementById('p2-score').innerText=p2;
+document.getElementById('total-score').innerText=t;
+var b=document.getElementById('grade-box'),v=document.getElementById('grade-val');
+if(t>=27){v.innerText='«5» (отлично)';b.style.background='#dcfce7';b.style.color='#14532d'}
+else if(t>=20){v.innerText='«4» (хорошо)';b.style.background='#dbeafe';b.style.color='#1e3a8a'}
+else if(t>=12){v.innerText='«3» (удовлетворительно)';b.style.background='#fef9c3';b.style.color='#713f12'}
+else{v.innerText='«2» (неудовлетворительно)';b.style.background='#fee2e2';b.style.color='#7f1d1d'}
+}
+function checkRadio(n,r){
+var c=document.getElementById('card-'+n),rs=c.querySelectorAll('input[type="radio"]'),ch=null;
+for(var i=0;i<rs.length;i++){if(rs[i].checked)ch=rs[i].value}
+var w=document.getElementById('warn-'+n);
+if(!ch){if(w)w.style.display='block';return}
+if(w)w.style.display='none';
+var fb=document.getElementById('fb-'+n);
+if(ch===r){p1+=1;fb.className='feedback show-ok'}else{fb.className='feedback show-err'}
+for(var j=0;j<rs.length;j++)rs[j].disabled=true;
+c.querySelector('.btn-check').disabled=true;
+upd();
+}
+function checkMatch(){
+var v1=document.getElementById('m1').value,v2=document.getElementById('m2').value,v3=document.getElementById('m3').value,v4=document.getElementById('m4').value,v5=document.getElementById('m5').value;
+var w=document.getElementById('warn-11');
+if(v1==='0'||v2==='0'||v3==='0'||v4==='0'||v5==='0'){if(w)w.style.display='block';return}
+if(w)w.style.display='none';
+var e=0;
+if(v1!=='1')e++;if(v2!=='2')e++;if(v3!=='1')e++;if(v4!=='2')e++;if(v5!=='2')e++;
+var g=e===0?2:(e===1?1:0);
+p1+=g;
+document.getElementById('fb-11').className=(g===2)?'feedback show-ok':'feedback show-err';
+for(var i=1;i<=5;i++)document.getElementById('m'+i).disabled=true;
+document.getElementById('card-11').querySelector('.btn-check').disabled=true;
+upd();
+}
+function showOpen(id){document.getElementById(id).className='feedback show-info'}
+function addOpenScore(n,pts){
+p2+=pts;
+var bs=document.getElementById('sg-'+n).querySelectorAll('button');
+for(var i=0;i<bs.length;i++)bs[i].disabled=true;
+upd();
+}
+function resetAll(){
+p1=0,p2=0;
+var rs=document.querySelectorAll('input[type="radio"]');for(var i=0;i<rs.length;i++){rs[i].checked=false;rs[i].disabled=false}
+var ss=document.querySelectorAll('select');for(var j=0;j<ss.length;j++){ss[j].value='0';ss[j].disabled=false}
+var ts=document.querySelectorAll('textarea');for(var a=0;a<ts.length;a++)ts[a].value='';
+var bs=document.querySelectorAll('.btn-check,.btn-grade');for(var k=0;k<bs.length;k++)bs[k].disabled=false;
+var fs=document.querySelectorAll('.feedback');for(var m=0;m<fs.length;m++)fs[m].className='feedback';
+var ws=document.querySelectorAll('.warn-msg');for(var w=0;w<ws.length;w++)ws[w].style.display='none';
+upd();window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
